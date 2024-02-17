@@ -26,6 +26,7 @@
     </style>
 
     <style name="Button4" parent="MainButton">
+        <item name="android:textSize">12pt</item>
         <item name="android:backgroundTint">#151311</item>
         <item name="android:textColor">#FFDCBE</item>
     </style>
