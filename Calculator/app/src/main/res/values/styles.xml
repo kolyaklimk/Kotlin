@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MainButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14pt</item>
+        <item name="android:layout_margin">3dp</item>
+    </style>
+
+    <style name="Button1" parent="MainButton">
+        <item name="android:textColor">#F2DFD1</item>
+        <item name="android:backgroundTint">#1F1B18</item>
+    </style>
+
+    <style name="Button2" parent="MainButton">
+        <item name="android:backgroundTint">#51453A</item>
+        <item name="android:textColor">#F2DFD1</item>
+    </style>
+
+    <style name="Button3" parent="MainButton">
+        <item name="android:backgroundTint">#58422C</item>
+        <item name="android:textColor">#FFDCBE</item>
+    </style>
+
+    <style name="Button4" parent="MainButton">
+        <item name="android:backgroundTint">#151311</item>
+        <item name="android:textColor">#FFDCBE</item>
+    </style>
+
+    <style name="horizontal_linear">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+</resources>

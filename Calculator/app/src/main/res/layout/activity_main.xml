@@ -1,18 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#151311"
+    android:orientation="vertical"
     tools:context=".MainActivity">
-    <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Hello World!"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:background="@drawable/round_backround"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.3" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            style="@style/horizontal_linear"
+            android:layout_weight="1.1">
+
+            <Button
+                style="@style/Button4"
+                android:text="√" />
+
+            <Button
+                style="@style/Button4"
+                android:text="π" />
+
+            <Button
+                style="@style/Button4"
+                android:text="^" />
+
+            <Button
+                style="@style/Button4"
+                android:text="!" />
+
+            <Button
+                style="@style/Button4"
+                android:rotation="180"
+                android:text="^" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/horizontal_linear">
+
+            <Button
+                style="@style/Button3"
+                android:text="AC" />
+
+            <Button
+                style="@style/Button2"
+                android:text="( )" />
+
+            <Button
+                style="@style/Button2"
+                android:text="%" />
+
+            <Button
+                style="@style/Button2"
+                android:text="÷" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/horizontal_linear">
+
+            <Button
+                style="@style/Button1"
+                android:text="7" />
+
+            <Button
+                style="@style/Button1"
+                android:text="8" />
+
+            <Button
+                style="@style/Button1"
+                android:text="9" />
+
+            <Button
+                style="@style/Button2"
+                android:text="×" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/horizontal_linear">
+
+            <Button
+                style="@style/Button1"
+                android:text="4" />
+
+            <Button
+                style="@style/Button1"
+                android:text="5" />
+
+            <Button
+                style="@style/Button1"
+                android:text="6" />
+
+            <Button
+                style="@style/Button2"
+                android:text="-" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/horizontal_linear">
+
+            <Button
+                style="@style/Button1"
+                android:text="1" />
+
+            <Button
+                style="@style/Button1"
+                android:text="2" />
+
+            <Button
+                style="@style/Button1"
+                android:text="3" />
+
+            <Button
+                style="@style/Button2"
+                android:text="+" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/horizontal_linear">
+
+            <Button
+                style="@style/Button1"
+                android:text="0" />
+
+            <Button
+                style="@style/Button1"
+                android:text="," />
+
+            <Button
+                style="@style/Button1"
+                android:text="⌫" />
+
+            <Button
+                style="@style/Button3"
+                android:text="=" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
