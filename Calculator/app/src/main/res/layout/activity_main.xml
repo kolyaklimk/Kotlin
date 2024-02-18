@@ -17,6 +17,7 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/b_menu"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end"
@@ -26,6 +27,7 @@
             android:textSize="12pt" />
 
         <EditText
+            android:id="@+id/text_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -36,6 +38,7 @@
             app:backgroundTint="@android:color/transparent" />
 
         <TextView
+            android:id="@+id/text_solve"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1.3"
@@ -56,64 +59,80 @@
         <LinearLayout style="@style/horizontal_linear">
 
             <Button
+                android:id="@+id/b_ad1"
                 style="@style/Button4"
                 android:text="√" />
 
             <Button
+                android:id="@+id/b_ad2"
                 style="@style/Button4"
                 android:text="π" />
 
             <Button
+                android:id="@+id/b_ad3"
                 style="@style/Button4"
                 android:text="^" />
 
             <Button
+                android:id="@+id/b_ad4"
                 style="@style/Button4"
                 android:text="!" />
 
             <Button
+                android:id="@+id/b_additionally"
                 style="@style/Button4"
                 android:rotation="180"
                 android:text="^" />
         </LinearLayout>
 
 
-        <LinearLayout style="@style/horizontal_linear">
+        <LinearLayout
+            android:id="@+id/linear1"
+            style="@style/horizontal_linear">
 
             <Button
+                android:id="@+id/b_rad_deg"
                 style="@style/Button4"
                 android:text="RAS" />
 
             <Button
+                android:id="@+id/b_ad5"
                 style="@style/Button4"
                 android:text="sin" />
 
             <Button
+                android:id="@+id/b_ad6"
                 style="@style/Button4"
                 android:text="cos" />
 
             <Button
+                android:id="@+id/b_ad7"
                 style="@style/Button4"
                 android:text="tan" />
 
         </LinearLayout>
 
-        <LinearLayout style="@style/horizontal_linear"
-            android:visibility="">
+        <LinearLayout
+            android:id="@+id/linear2"
+            style="@style/horizontal_linear">
 
             <Button
+                android:id="@+id/b_inv"
                 style="@style/Button4"
                 android:text="INV" />
 
             <Button
+                android:id="@+id/b_ad8"
                 style="@style/Button4"
                 android:text="e" />
 
             <Button
+                android:id="@+id/b_ad9"
                 style="@style/Button4"
                 android:text="In" />
 
             <Button
+                android:id="@+id/b_ad10"
                 style="@style/Button4"
                 android:text="log" />
 
@@ -131,18 +150,22 @@
         <LinearLayout style="@style/horizontal_linear">
 
             <Button
+                android:id="@+id/b_ac"
                 style="@style/Button3"
                 android:text="AC" />
 
             <Button
+                android:id="@+id/b_brackets"
                 style="@style/Button2"
                 android:text="( )" />
 
             <Button
+                android:id="@+id/b_procent"
                 style="@style/Button2"
                 android:text="%" />
 
             <Button
+                android:id="@+id/b_div"
                 style="@style/Button2"
                 android:text="÷" />
         </LinearLayout>
@@ -150,18 +173,22 @@
         <LinearLayout style="@style/horizontal_linear">
 
             <Button
+                android:id="@+id/b_7"
                 style="@style/Button1"
                 android:text="7" />
 
             <Button
+                android:id="@+id/b_8"
                 style="@style/Button1"
                 android:text="8" />
 
             <Button
+                android:id="@+id/b_9"
                 style="@style/Button1"
                 android:text="9" />
 
             <Button
+                android:id="@+id/b_mult"
                 style="@style/Button2"
                 android:text="×" />
         </LinearLayout>
@@ -169,18 +196,22 @@
         <LinearLayout style="@style/horizontal_linear">
 
             <Button
+                android:id="@+id/b_4"
                 style="@style/Button1"
                 android:text="4" />
 
             <Button
+                android:id="@+id/b_5"
                 style="@style/Button1"
                 android:text="5" />
 
             <Button
+                android:id="@+id/b_6"
                 style="@style/Button1"
                 android:text="6" />
 
             <Button
+                android:id="@+id/b_minus"
                 style="@style/Button2"
                 android:text="-" />
         </LinearLayout>
@@ -188,18 +219,22 @@
         <LinearLayout style="@style/horizontal_linear">
 
             <Button
+                android:id="@+id/b_1"
                 style="@style/Button1"
                 android:text="1" />
 
             <Button
+                android:id="@+id/b_2"
                 style="@style/Button1"
                 android:text="2" />
 
             <Button
+                android:id="@+id/b_3"
                 style="@style/Button1"
                 android:text="3" />
 
             <Button
+                android:id="@+id/b_plus"
                 style="@style/Button2"
                 android:text="+" />
         </LinearLayout>
@@ -207,18 +242,22 @@
         <LinearLayout style="@style/horizontal_linear">
 
             <Button
+                android:id="@+id/b_0"
                 style="@style/Button1"
                 android:text="0" />
 
             <Button
+                android:id="@+id/b_dot"
                 style="@style/Button1"
                 android:text="," />
 
             <Button
+                android:id="@+id/b_del"
                 style="@style/Button1"
                 android:text="⌫" />
 
             <Button
+                android:id="@+id/b_solve"
                 style="@style/Button3"
                 android:text="=" />
         </LinearLayout>
