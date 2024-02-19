@@ -8,7 +8,7 @@ class StringCalculating {
     companion object {
         fun Calculating(string: String): String {
             try {
-                val ex = ExpressionBuilder(string).build()
+                val ex = ExpressionBuilder(ReplaceSpecialOperation(string)).build()
                 val res = ex.evaluate()
 
                 if (res == res.toLong().toDouble()) {
@@ -18,6 +18,13 @@ class StringCalculating {
             } catch (ex: Exception) {
                 return "Error"
             }
+        }
+
+        private fun ReplaceSpecialOperation(string: String): String {
+            return string
+                .replace("√", "sqrt")
+                .replace("log", "log10")
+                .replace("ln", "log")
         }
     }
 }
