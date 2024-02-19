@@ -15,16 +15,34 @@ class CalculatorActionListener(act: AppCompatActivity) {
     private val linear_additionally = act.findViewById<LinearLayout>(R.id.linear_additionally)
     private val linear_all_additionally =
         act.findViewById<LinearLayout>(R.id.linear_all_additionally)
+    private var INV = true
 
     fun SubscribeButtons() {
 
+        text_main.showSoftInputOnFocus = false
+
         for (i in 0..9) SubscribeButtonByString("b_$i")
 
-        for (i in 1..10) SubscribeButtonByString("b_ad$i")
+        for (i in 1..9) SubscribeButtonByString("b_ad$i")
 
         act.findViewById<Button>(R.id.b_ac).setOnClickListener {
             text_main.text.clear()
             text_solve.text = ""
+        }
+
+
+        act.findViewById<Button>(R.id.b_INV).setOnClickListener {
+            if (INV) {
+                act.findViewById<Button>(R.id.b_ad7).setText("asin")
+                act.findViewById<Button>(R.id.b_ad8).setText("acos")
+                act.findViewById<Button>(R.id.b_ad9).setText("atan")
+            }
+            else{
+                act.findViewById<Button>(R.id.b_ad7).setText("sin")
+                act.findViewById<Button>(R.id.b_ad8).setText("cos")
+                act.findViewById<Button>(R.id.b_ad9).setText("tan")
+            }
+            INV = !INV
         }
 
         act.findViewById<Button>(R.id.b_additionally).setOnClickListener {
@@ -40,13 +58,11 @@ class CalculatorActionListener(act: AppCompatActivity) {
                 it.rotation = 180f
             }
             linear_all_additionally.layoutParams = layoutParams
-
-            // промежуточное решение
         }
 
         act.findViewById<Button>(R.id.b_solve).setOnClickListener {
+            text_main.setText(text_solve.text)
             text_solve.text = ""
-            // Логика Решения примера
         }
 
         act.findViewById<Button>(R.id.b_del).setOnClickListener {
@@ -55,7 +71,7 @@ class CalculatorActionListener(act: AppCompatActivity) {
             if (selectionStart > 0 && text_main.text.isNotEmpty()) {
                 text_main.text.delete(selectionStart - 1, selectionStart)
             }
-            // промежуточное решение
+            text_solve.text = StringCalculating.Calculating(text_main.text.toString())
         }
 
         SubscribeButtonById(R.id.b_o_brackets)
@@ -76,7 +92,6 @@ class CalculatorActionListener(act: AppCompatActivity) {
         button.setOnClickListener {
             InputSymbolToMain(button.text.toString())
         }
-        // промежуточное решение
     }
 
     private fun SubscribeButtonById(name: Int) {
@@ -84,18 +99,17 @@ class CalculatorActionListener(act: AppCompatActivity) {
         button.setOnClickListener {
             InputSymbolToMain(button.text.toString())
         }
-        // промежуточное решение
     }
 
     private fun InputSymbolToMain(string: String) {
         val cursorPosition = text_main.selectionStart
 
-        val newText =
-            text_main.text.substring(0, cursorPosition) + string + text_main.text.substring(
-                cursorPosition
-            )
+        val newText = text_main.text.substring(0, cursorPosition) + string +
+                text_main.text.substring(cursorPosition)
 
         text_main.setText(newText)
-        text_main.setSelection(cursorPosition + 1)
+        text_main.setSelection(cursorPosition + string.length)
+
+        text_solve.text = StringCalculating.Calculating(text_main.text.toString())
     }
 }

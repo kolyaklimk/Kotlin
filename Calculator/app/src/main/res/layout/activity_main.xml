@@ -32,6 +32,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center|end"
+            android:inputType="textNoSuggestions"
             android:singleLine="true"
             android:text="21345+213"
             android:textColor="#E8E1DC"
@@ -44,6 +45,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1.3"
             android:gravity="center|end"
+            android:singleLine="true"
             android:text="21345+213"
             android:textColor="#CCC5C2"
             android:textSize="28pt" />
@@ -86,7 +88,7 @@
                 <Button
                     android:id="@+id/b_ad4"
                     style="@style/Button4"
-                    android:text="!" />
+                    android:text="e" />
 
                 <Button
                     android:id="@+id/b_additionally"
@@ -107,19 +109,19 @@
                 <LinearLayout style="@style/horizontal_linear">
 
                     <Button
+                        android:id="@+id/b_INV"
+                        style="@style/Button4"
+                        android:text="INV" />
+
+                    <Button
                         android:id="@+id/b_ad5"
                         style="@style/Button4"
-                        android:text="sin" />
+                        android:text="ln" />
 
                     <Button
                         android:id="@+id/b_ad6"
                         style="@style/Button4"
-                        android:text="cos" />
-
-                    <Button
-                        android:id="@+id/b_ad7"
-                        style="@style/Button4"
-                        android:text="tan" />
+                        android:text="log" />
 
                 </LinearLayout>
 
@@ -128,19 +130,19 @@
                     style="@style/horizontal_linear">
 
                     <Button
+                        android:id="@+id/b_ad7"
+                        style="@style/Button4"
+                        android:text="sin" />
+
+                    <Button
                         android:id="@+id/b_ad8"
                         style="@style/Button4"
-                        android:text="e" />
+                        android:text="cos" />
 
                     <Button
                         android:id="@+id/b_ad9"
                         style="@style/Button4"
-                        android:text="In" />
-
-                    <Button
-                        android:id="@+id/b_ad10"
-                        style="@style/Button4"
-                        android:text="log" />
+                        android:text="tan" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -175,7 +177,7 @@
             <Button
                 android:id="@+id/b_div"
                 style="@style/Button2"
-                android:text="÷" />
+                android:text="/" />
         </LinearLayout>
 
         <LinearLayout style="@style/horizontal_linear">
@@ -198,7 +200,7 @@
             <Button
                 android:id="@+id/b_mult"
                 style="@style/Button2"
-                android:text="×" />
+                android:text="*" />
         </LinearLayout>
 
         <LinearLayout style="@style/horizontal_linear">
@@ -257,7 +259,7 @@
             <Button
                 android:id="@+id/b_dot"
                 style="@style/Button1"
-                android:text="," />
+                android:text="." />
 
             <Button
                 android:id="@+id/b_del"
