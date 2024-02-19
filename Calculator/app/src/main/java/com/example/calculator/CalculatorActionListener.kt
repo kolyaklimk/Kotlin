@@ -33,9 +33,11 @@ class CalculatorActionListener(act: AppCompatActivity) {
             if (linear_additionally.visibility == View.GONE) {
                 linear_additionally.visibility = View.VISIBLE
                 layoutParams.weight = 0.8f
+                it.rotation = 0f
             } else {
                 linear_additionally.visibility = View.GONE
                 layoutParams.weight = 1f
+                it.rotation = 180f
             }
             linear_all_additionally.layoutParams = layoutParams
 
@@ -48,10 +50,14 @@ class CalculatorActionListener(act: AppCompatActivity) {
         }
 
         act.findViewById<Button>(R.id.b_del).setOnClickListener {
-            if(text_main.length()!=0)
-                text_main.text.delete(text_main.length() - 1, text_main.length())
+            val selectionStart = text_main.selectionStart
+
+            if (selectionStart > 0 && text_main.text.isNotEmpty()) {
+                text_main.text.delete(selectionStart - 1, selectionStart)
+            }
             // промежуточное решение
         }
+
         SubscribeButtonById(R.id.b_o_brackets)
         SubscribeButtonById(R.id.b_c_brackets)
         SubscribeButtonById(R.id.b_dot)
@@ -68,7 +74,7 @@ class CalculatorActionListener(act: AppCompatActivity) {
         val buttonId = act.resources.getIdentifier(name, "id", act.packageName)
         val button = act.findViewById<Button>(buttonId)
         button.setOnClickListener {
-            text_main.append(button.text)
+            InputSymbolToMain(button.text.toString())
         }
         // промежуточное решение
     }
@@ -76,8 +82,20 @@ class CalculatorActionListener(act: AppCompatActivity) {
     private fun SubscribeButtonById(name: Int) {
         val button = act.findViewById<Button>(name)
         button.setOnClickListener {
-            text_main.append(button.text)
+            InputSymbolToMain(button.text.toString())
         }
         // промежуточное решение
+    }
+
+    private fun InputSymbolToMain(string: String) {
+        val cursorPosition = text_main.selectionStart
+
+        val newText =
+            text_main.text.substring(0, cursorPosition) + string + text_main.text.substring(
+                cursorPosition
+            )
+
+        text_main.setText(newText)
+        text_main.setSelection(cursorPosition + 1)
     }
 }

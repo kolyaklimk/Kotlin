@@ -63,7 +63,7 @@
             android:id="@+id/linear_all_additionally"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.8"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <LinearLayout style="@style/horizontal_linear">
@@ -101,7 +101,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <LinearLayout style="@style/horizontal_linear">
 
