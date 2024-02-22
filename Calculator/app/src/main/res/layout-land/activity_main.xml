@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1.4"
-        android:background="@drawable/round_backround"
+        android:background="@drawable/round_backgound"
         android:orientation="vertical">
 
         <Button

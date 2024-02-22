@@ -12,24 +12,24 @@
     </style>
 
     <style name="Button1" parent="MainButton">
-        <item name="android:textColor">#F2DFD1</item>
-        <item name="android:backgroundTint">#1F1B18</item>
+        <item name="android:textColor">@color/Button1_text</item>
+        <item name="android:backgroundTint">@color/Button1</item>
     </style>
 
     <style name="Button2" parent="MainButton">
-        <item name="android:backgroundTint">#51453A</item>
-        <item name="android:textColor">#F2DFD1</item>
+        <item name="android:backgroundTint">@color/Button2</item>
+        <item name="android:textColor">@color/Button2_text</item>
     </style>
 
     <style name="Button3" parent="MainButton">
-        <item name="android:backgroundTint">#58422C</item>
-        <item name="android:textColor">#FFDCBE</item>
+        <item name="android:backgroundTint">@color/Button3</item>
+        <item name="android:textColor">@color/Button3_text</item>
     </style>
 
     <style name="Button4" parent="MainButton">
         <item name="android:textSize">12pt</item>
-        <item name="android:backgroundTint">#151311</item>
-        <item name="android:textColor">#FFDCBE</item>
+        <item name="android:backgroundTint">@color/Button4</item>
+        <item name="android:textColor">@color/Button4_text</item>
     </style>
 
     <style name="horizontal_linear">
@@ -44,9 +44,11 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1.5</item>
+        <item name="android:layout_gravity">end</item>
         <item name="android:gravity">end</item>
         <item name="android:textSize">12pt</item>
-        <item name="android:backgroundTint">#302B27</item>
+        <item name="android:textColor">@color/ButtonMenu_text</item>
+        <item name="android:backgroundTint">@color/ButtonMenu</item>
     </style>
 
 
@@ -59,7 +61,7 @@
         <item name="android:inputType">textNoSuggestions</item>
         <item name="android:backgroundTint">@android:color/transparent</item>
         <item name="android:singleLine">true</item>
-        <item name="android:textColor">#E8E1DC</item>
+        <item name="android:textColor">@color/MainTextEdit</item>
     </style>
 
     <style name="SecondTextView">
@@ -71,7 +73,7 @@
         <item name="android:scrollHorizontally">true</item>
         <item name="android:singleLine">true</item>
         <item name="android:ellipsize">none</item>
-        <item name="android:textColor">#CCC5C2</item>
+        <item name="android:textColor">@color/SecondTextView</item>
     </style>
 
 </resources>

@@ -64,7 +64,12 @@ class CalculatorActionListener(act: AppCompatActivity) {
         }
 
         act.findViewById<Button>(R.id.b_solve).setOnClickListener {
-            text_main.setText(text_solve.text)
+            if(text_solve.text != "Error") {
+                text_main.setText(text_solve.text)
+            }
+            else{
+                text_main.text.clear()
+            }
             text_solve.text = ""
             text_main.setSelection(text_main.length())
         }
@@ -83,11 +88,14 @@ class CalculatorActionListener(act: AppCompatActivity) {
         SubscribeButtonById(R.id.b_dot)
         SubscribeButtonById(R.id.b_div)
         SubscribeButtonById(R.id.b_dot)
-        SubscribeButtonById(R.id.b_menu)
         SubscribeButtonById(R.id.b_minus)
         SubscribeButtonById(R.id.b_mult)
         SubscribeButtonById(R.id.b_plus)
         SubscribeButtonById(R.id.b_procent)
+
+        act.findViewById<Button>(R.id.b_menu).setOnClickListener {
+
+        }
     }
 
     private fun SubscribeButtonByString(name: String) {

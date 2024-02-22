@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="black">#252525</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="Button1">#FFDAB9</color>
+    <color name="Button1_text">#804000</color>
+
+    <color name="Button2">#FFC0A9</color>
+    <color name="Button2_text">#804000</color>
+
+    <color name="Button3">#FFB6A4</color>
+    <color name="Button3_text">#804000</color>
+
+    <color name="Button4">#FFEDDB</color>
+    <color name="Button4_text">#804000</color>
+
+    <color name="ButtonMenu">#FFDAB9</color>
+    <color name="ButtonMenu_text">#804000</color>
+
+    <color name="MainTextEdit">#804000</color>
+    <color name="SecondTextView">#A0522D</color>
+
+    <color name="CursorColor">#A0522D</color>
+
+    <color name="TextWindow">#FFDAB9</color>
+    <color name="ButtonsWindow">#FFEDDB</color>
 </resources>

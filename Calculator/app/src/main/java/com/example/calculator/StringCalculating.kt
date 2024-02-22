@@ -16,7 +16,7 @@ class StringCalculating {
                 }
                 return res.toString()
             } catch (ex: Exception) {
-                return ""
+                return "Error"
             }
         }
 

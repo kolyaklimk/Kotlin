@@ -1,3 +1,36 @@
 <resources>
     <string name="app_name">Calculator</string>
+    <string name="b_menu">⋮</string>
+    <string name="b_ad1">v</string>
+    <string name="b_ad2">π</string>
+    <string name="b_ad3">^</string>
+    <string name="b_ad4">e</string>
+    <string name="b_additionally">^</string>
+    <string name="b_INV">INV</string>
+    <string name="b_ad5">ln</string>
+    <string name="b_ad6">log</string>
+    <string name="b_ad7">sin</string>
+    <string name="b_ad8">cos</string>
+    <string name="b_ad9">tan</string>
+    <string name="b_ac">AC</string>
+    <string name="b_o_brackets">(</string>
+    <string name="b_c_brackets">)</string>
+    <string name="b_procent">%</string>
+    <string name="b_div">/</string>
+    <string name="b_0">0</string>
+    <string name="b_1">1</string>
+    <string name="b_2">2</string>
+    <string name="b_3">3</string>
+    <string name="b_4">4</string>
+    <string name="b_5">5</string>
+    <string name="b_6">6</string>
+    <string name="b_7">7</string>
+    <string name="b_8">8</string>
+    <string name="b_9">9</string>
+    <string name="b_mult">*</string>
+    <string name="b_minus">-</string>
+    <string name="b_plus">+</string>
+    <string name="b_dot">.</string>
+    <string name="b_del">⌫</string>
+    <string name="b_solve">=</string>
 </resources>

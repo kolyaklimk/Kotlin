@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Calculator" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="android:statusBarColor">#302B27</item>
-        <item name="android:windowLightStatusBar">false</item>
+        <!--        <item name="colorPrimary">#FFFFFF</item>-->
+        <item name="android:statusBarColor">#FFDAB9</item>
+        <item name="android:windowLightStatusBar">true</item>
         <item name="android:textCursorDrawable">@drawable/cursor</item>
     </style>
 

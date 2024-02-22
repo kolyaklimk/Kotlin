@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="Button1">#1F1B18</color>
+    <color name="Button1_text">#F2DFD1</color>
+
+    <color name="Button2">#51453A</color>
+    <color name="Button2_text">#F2DFD1</color>
+
+    <color name="Button3">#58422C</color>
+    <color name="Button3_text">#FFDCBE</color>
+
+    <color name="Button4">#151311</color>
+    <color name="Button4_text">#F2DFD1</color>
+
+    <color name="ButtonMenu">#302B27</color>
+    <color name="ButtonMenu_text">#F2DFD1</color>
+
+    <color name="MainTextEdit">#E8E1DC</color>
+    <color name="SecondTextView">#CCC5C2</color>
+
+    <color name="CursorColor">#E8E1DC</color>
+
+    <color name="TextWindow">#302B27</color>
+    <color name="ButtonsWindow">#151311</color>
+</resources>
