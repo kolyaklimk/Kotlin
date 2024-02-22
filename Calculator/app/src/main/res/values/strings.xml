@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Calculator</string>
     <string name="b_menu">⋮</string>
-    <string name="b_ad1">v</string>
+    <string name="b_ad1">√</string>
     <string name="b_ad2">π</string>
     <string name="b_ad3">^</string>
     <string name="b_ad4">e</string>

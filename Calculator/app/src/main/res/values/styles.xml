@@ -6,9 +6,9 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">14pt</item>
+        <item name="android:textSize">@dimen/_22ssp</item>
         <item name="android:padding">0dp</item>
-        <item name="android:layout_margin">3dp</item>
+        <item name="android:layout_margin">@dimen/_3ssp</item>
     </style>
 
     <style name="Button1" parent="MainButton">
@@ -27,7 +27,7 @@
     </style>
 
     <style name="Button4" parent="MainButton">
-        <item name="android:textSize">12pt</item>
+        <item name="android:textSize">@dimen/_18ssp</item>
         <item name="android:backgroundTint">@color/Button4</item>
         <item name="android:textColor">@color/Button4_text</item>
     </style>
@@ -46,7 +46,7 @@
         <item name="android:layout_weight">1.5</item>
         <item name="android:layout_gravity">end</item>
         <item name="android:gravity">end</item>
-        <item name="android:textSize">12pt</item>
+        <item name="android:textSize">@dimen/_22ssp</item>
         <item name="android:textColor">@color/ButtonMenu_text</item>
         <item name="android:backgroundTint">@color/ButtonMenu</item>
     </style>
@@ -57,7 +57,8 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center|end</item>
-        <item name="android:textSize">32pt</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/_32ssp</item>
         <item name="android:inputType">textNoSuggestions</item>
         <item name="android:backgroundTint">@android:color/transparent</item>
         <item name="android:singleLine">true</item>
@@ -69,7 +70,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1.3</item>
         <item name="android:gravity">center|end</item>
-        <item name="android:textSize">28pt</item>
+        <item name="android:textSize">@dimen/_26ssp</item>
         <item name="android:scrollHorizontally">true</item>
         <item name="android:singleLine">true</item>
         <item name="android:ellipsize">none</item>
