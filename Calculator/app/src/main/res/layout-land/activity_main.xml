@@ -50,7 +50,8 @@
             android:singleLine="true"
             android:text="21345+213"
             android:textColor="#CCC5C2"
-            android:textSize="28pt" />
+            android:textSize="28pt"
+            android:visibility="gone" />
 
     </LinearLayout>
 
@@ -60,7 +61,8 @@
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:layout_weight="0.75"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:weightSum="8">
 
 
         <LinearLayout
@@ -96,61 +98,57 @@
                     android:id="@+id/b_additionally"
                     style="@style/Button4"
                     android:rotation="180"
-                    android:text="^" />
+                    android:text="^"
+                    android:visibility="gone" />
             </LinearLayout>
 
+            <LinearLayout style="@style/horizontal_linear">
+
+                <Button
+                    android:id="@+id/b_INV"
+                    style="@style/Button4"
+                    android:text="INV" />
+
+                <Button
+                    android:id="@+id/b_ad5"
+                    style="@style/Button4"
+                    android:text="ln" />
+
+                <Button
+                    android:id="@+id/b_ad6"
+                    style="@style/Button4"
+                    android:text="log" />
+
+            </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linear_additionally"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:id="@+id/linear2"
+                style="@style/horizontal_linear">
 
-                <LinearLayout style="@style/horizontal_linear">
+                <Button
+                    android:id="@+id/b_ad7"
+                    style="@style/Button4"
+                    android:text="sin" />
 
-                    <Button
-                        android:id="@+id/b_INV"
-                        style="@style/Button4"
-                        android:text="INV" />
+                <Button
+                    android:id="@+id/b_ad8"
+                    style="@style/Button4"
+                    android:text="cos" />
 
-                    <Button
-                        android:id="@+id/b_ad5"
-                        style="@style/Button4"
-                        android:text="ln" />
+                <Button
+                    android:id="@+id/b_ad9"
+                    style="@style/Button4"
+                    android:text="tan" />
 
-                    <Button
-                        android:id="@+id/b_ad6"
-                        style="@style/Button4"
-                        android:text="log" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linear2"
-                    style="@style/horizontal_linear">
-
-                    <Button
-                        android:id="@+id/b_ad7"
-                        style="@style/Button4"
-                        android:text="sin" />
-
-                    <Button
-                        android:id="@+id/b_ad8"
-                        style="@style/Button4"
-                        android:text="cos" />
-
-                    <Button
-                        android:id="@+id/b_ad9"
-                        style="@style/Button4"
-                        android:text="tan" />
-
-                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout style="@style/horizontal_linear">
+        <LinearLayout style="@style/horizontal_linear"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/b_ac"
@@ -182,7 +180,8 @@
                 android:text="/" />
         </LinearLayout>
 
-        <LinearLayout style="@style/horizontal_linear">
+        <LinearLayout style="@style/horizontal_linear"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/b_7"
@@ -205,7 +204,9 @@
                 android:text="*" />
         </LinearLayout>
 
-        <LinearLayout style="@style/horizontal_linear">
+        <LinearLayout style="@style/horizontal_linear"
+
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/b_4"
@@ -228,7 +229,8 @@
                 android:text="-" />
         </LinearLayout>
 
-        <LinearLayout style="@style/horizontal_linear">
+        <LinearLayout style="@style/horizontal_linear"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/b_1"
@@ -251,7 +253,8 @@
                 android:text="+" />
         </LinearLayout>
 
-        <LinearLayout style="@style/horizontal_linear">
+        <LinearLayout style="@style/horizontal_linear"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/b_0"

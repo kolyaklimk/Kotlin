@@ -1,11 +1,13 @@
 package com.example.calculator
 
+import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+
 
 class CalculatorActionListener(act: AppCompatActivity) {
 
@@ -20,6 +22,8 @@ class CalculatorActionListener(act: AppCompatActivity) {
     fun SubscribeButtons() {
 
         text_main.showSoftInputOnFocus = false
+        text_solve.showSoftInputOnFocus = false
+
 
         for (i in 0..9) SubscribeButtonByString("b_$i")
 
@@ -36,8 +40,7 @@ class CalculatorActionListener(act: AppCompatActivity) {
                 act.findViewById<Button>(R.id.b_ad7).setText("asin")
                 act.findViewById<Button>(R.id.b_ad8).setText("acos")
                 act.findViewById<Button>(R.id.b_ad9).setText("atan")
-            }
-            else{
+            } else {
                 act.findViewById<Button>(R.id.b_ad7).setText("sin")
                 act.findViewById<Button>(R.id.b_ad8).setText("cos")
                 act.findViewById<Button>(R.id.b_ad9).setText("tan")
@@ -63,6 +66,7 @@ class CalculatorActionListener(act: AppCompatActivity) {
         act.findViewById<Button>(R.id.b_solve).setOnClickListener {
             text_main.setText(text_solve.text)
             text_solve.text = ""
+            text_main.setSelection(text_main.length())
         }
 
         act.findViewById<Button>(R.id.b_del).setOnClickListener {
