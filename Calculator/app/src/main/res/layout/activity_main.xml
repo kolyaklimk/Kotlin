@@ -163,7 +163,7 @@
             <Button
                 android:id="@+id/b_7"
                 style="@style/Button1"
-                android:text="@string/b_1" />
+                android:text="@string/b_7" />
 
             <Button
                 android:id="@+id/b_8"
