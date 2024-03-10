@@ -6,6 +6,7 @@
         <item name="android:statusBarColor">#302B27</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:textCursorDrawable">@drawable/cursor</item>
+        <item name="android:popupMenuStyle">@style/PopupMenuStyle</item>
     </style>
 
     <style name="Theme.Calculator" parent="Base.Theme.Calculator" />

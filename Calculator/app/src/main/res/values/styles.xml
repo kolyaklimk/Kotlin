@@ -77,4 +77,11 @@
         <item name="android:textColor">@color/SecondTextView</item>
     </style>
 
+    <style name="PopupMenuStyle" parent="@android:style/Widget.PopupMenu">
+        <item name="android:dropDownWidth">wrap_content</item>
+        <item name="android:dropDownHeight">wrap_content</item>
+        <item name="android:popupBackground">@color/Button2</item>
+        <item name="textColorAlertDialogListItem">@color/Button2_text</item>
+    </style>
+
 </resources>

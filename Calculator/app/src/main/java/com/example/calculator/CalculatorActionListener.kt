@@ -1,8 +1,9 @@
 package com.example.calculator
 
-import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.Button
+import android.widget.PopupMenu
+import android.widget.Toast
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -64,10 +65,9 @@ class CalculatorActionListener(act: AppCompatActivity) {
         }
 
         act.findViewById<Button>(R.id.b_solve).setOnClickListener {
-            if(text_solve.text != "Error") {
+            if (text_solve.text != "Error") {
                 text_main.setText(text_solve.text)
-            }
-            else{
+            } else {
                 text_main.text.clear()
             }
             text_solve.text = ""
@@ -93,8 +93,19 @@ class CalculatorActionListener(act: AppCompatActivity) {
         SubscribeButtonById(R.id.b_plus)
         SubscribeButtonById(R.id.b_procent)
 
-        act.findViewById<Button>(R.id.b_menu).setOnClickListener {
-
+        val b_menu = act.findViewById<Button>(R.id.b_menu)
+        b_menu.setOnClickListener {
+            val popupMenu = PopupMenu(this.act, b_menu)
+            popupMenu.menuInflater.inflate(R.menu.main_menu, popupMenu.menu)
+            popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.Snan_QR ->
+                        Toast.makeText(this.act, "You Clicked : " + item.title, Toast.LENGTH_SHORT)
+                            .show()
+                }
+                true
+            })
+            popupMenu.show()
         }
     }
 
