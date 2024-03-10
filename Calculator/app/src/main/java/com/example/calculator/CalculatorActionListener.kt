@@ -1,5 +1,8 @@
 package com.example.calculator
 
+import android.app.Activity
+import android.app.Activity.RESULT_OK
+import android.content.Intent
 import android.view.View
 import android.widget.Button
 import android.widget.PopupMenu
@@ -19,6 +22,7 @@ class CalculatorActionListener(act: AppCompatActivity) {
     private val linear_all_additionally =
         act.findViewById<LinearLayout>(R.id.linear_all_additionally)
     private var INV = true
+
 
     fun SubscribeButtons() {
 
@@ -99,13 +103,25 @@ class CalculatorActionListener(act: AppCompatActivity) {
             popupMenu.menuInflater.inflate(R.menu.main_menu, popupMenu.menu)
             popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
                 when (item.itemId) {
-                    R.id.Snan_QR ->
+                    R.id.Snan_QR -> {
                         Toast.makeText(this.act, "You Clicked : " + item.title, Toast.LENGTH_SHORT)
                             .show()
+
+                        act.startActivityForResult(Intent(act, ScanQRActivity::class.java), 100)
+                    }
                 }
                 true
             })
             popupMenu.show()
+        }
+    }
+
+    fun handleActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
+            if (resultCode == Activity.RESULT_OK) {
+                val scanResult = data?.getStringExtra("SCAN_RESULT")
+                InputSymbolToMain(scanResult.toString())
+            }
         }
     }
 
@@ -135,4 +151,5 @@ class CalculatorActionListener(act: AppCompatActivity) {
 
         text_solve.text = StringCalculating.Calculating(text_main.text.toString())
     }
+
 }

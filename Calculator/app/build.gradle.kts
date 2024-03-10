@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation("com.github.yuriy-budiyev:code-scanner:2.3.2")
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
