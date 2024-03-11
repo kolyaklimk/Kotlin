@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation("com.github.androidmads:QRGenerator:1.0.1")
     implementation("com.github.yuriy-budiyev:code-scanner:2.3.2")
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("androidx.core:core-ktx:1.12.0")

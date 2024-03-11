@@ -6,6 +6,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -36,27 +38,32 @@ class ScanQRActivity : AppCompatActivity() {
         codeScanner.decodeCallback = DecodeCallback {
             runOnUiThread {
                 codeScanner.scanMode = ScanMode.PREVIEW
-                val builder = AlertDialog.Builder(this)
-                builder.setTitle("Scan result")
-                    .setMessage(it.text)
-                    .setPositiveButton("Yes") { dialog, _ ->
-                        dialog.dismiss()
-                        codeScanner.scanMode = ScanMode.CONTINUOUS
+                val text_it = it.text
+                val builder = AlertDialog.Builder(this, R.style.CustomAlertDialog)
+                    .create()
+                val view = layoutInflater.inflate(R.layout.custom_alert, null)
+                val button1 = view.findViewById<Button>(R.id.yes_button)
+                val button2 = view.findViewById<Button>(R.id.no_button)
+                view.findViewById<TextView>(R.id.res_alert).setText(text_it)
+                builder.setView(view)
+                button1.setOnClickListener {
+                    builder.dismiss()
+                    codeScanner.scanMode = ScanMode.CONTINUOUS
 
-                        val resultIntent = Intent()
-                        resultIntent.putExtra("SCAN_RESULT", it.text)
-                        setResult(RESULT_OK, resultIntent)
+                    val resultIntent = Intent()
+                    resultIntent.putExtra("SCAN_RESULT", text_it)
+                    setResult(RESULT_OK, resultIntent)
 
-                        finish()
-                    }
-                    .setNegativeButton("No") { dialog, _ ->
-                        dialog.dismiss()
-                        codeScanner.scanMode = ScanMode.CONTINUOUS
-                    }
-                    .setOnDismissListener {
-                        codeScanner.scanMode = ScanMode.CONTINUOUS
-                    }
-                    .show()
+                    finish()
+                }
+                button2.setOnClickListener {
+                    builder.dismiss()
+                    codeScanner.scanMode = ScanMode.CONTINUOUS
+                }
+                builder.setOnDismissListener {
+                    codeScanner.scanMode = ScanMode.CONTINUOUS
+                }
+                builder.show()
             }
         }
 

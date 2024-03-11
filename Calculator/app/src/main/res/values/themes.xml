@@ -4,6 +4,8 @@
         <!-- Customize your light theme here. -->
         <!--        <item name="colorPrimary">#FFFFFF</item>-->
         <item name="android:statusBarColor">#FFDAB9</item>
+
+        <item name="android:windowLayoutInDisplayCutoutMode">default</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:textCursorDrawable">@drawable/cursor</item>
         <item name="android:popupMenuStyle">@style/PopupMenuStyle</item>
@@ -15,5 +17,14 @@
         <item name="windowSplashScreenBackground">@color/TextWindow</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/icon_app</item>
         <item name="postSplashScreenTheme">@style/Base.Theme.Calculator</item>
+    </style>
+
+    <style name="NoNavBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/rounded_alert</item>
     </style>
 </resources>

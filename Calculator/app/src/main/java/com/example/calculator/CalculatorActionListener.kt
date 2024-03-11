@@ -2,13 +2,20 @@ package com.example.calculator
 
 import android.app.Activity
 import android.app.Activity.RESULT_OK
+import android.content.Context
 import android.content.Intent
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.PopupMenu
 import android.widget.Toast
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -104,10 +111,52 @@ class CalculatorActionListener(act: AppCompatActivity) {
             popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.Snan_QR -> {
-                        Toast.makeText(this.act, "You Clicked : " + item.title, Toast.LENGTH_SHORT)
-                            .show()
-
                         act.startActivityForResult(Intent(act, ScanQRActivity::class.java), 100)
+                    }
+
+                    R.id.Create_QR -> {
+                        try {
+                            if (text_main.text.isNotEmpty()) {
+                                val inflater =
+                                    act.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                                val popupView = inflater.inflate(R.layout.create_qr_code, null)
+
+                                val qrImageView: ImageView = popupView.findViewById(R.id.image_qr)
+
+                                val qrCodeBitmap =
+                                    CreateQRCode().generateQRCode(text_main.text.toString(), act)
+
+                                qrImageView.setImageBitmap(qrCodeBitmap)
+
+                                val popupWindow = PopupWindow(
+                                    popupView,
+                                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                                    true
+                                )
+
+                                popupWindow.animationStyle = R.style.PopupAnimation
+
+                                CreateQRCode().changeBrightness(act, 1.0f)
+                                popupWindow.setOnDismissListener {
+                                    CreateQRCode().changeBrightness(act, WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE)
+                                }
+
+                                popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+                            } else {
+                                Toast.makeText(
+                                    this.act,
+                                    "Main text is empty",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        } catch (ex: Exception) {
+                            Toast.makeText(
+                                this.act,
+                                "QR code creation ERROR",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                 }
                 true
