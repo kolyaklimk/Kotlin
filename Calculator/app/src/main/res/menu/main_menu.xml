@@ -10,5 +10,5 @@
         android:title="Create QR code" />
     <item
         android:id="@+id/Gravity_Game"
-        android:title="Start game" />
+        android:title="Mini game" />
 </menu>
