@@ -24,7 +24,6 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 class CalculatorActionListener(act: AppCompatActivity) {
-
     private var act = act
     private val text_main = act.findViewById<EditText>(R.id.text_main)
     private val text_solve = act.findViewById<TextView>(R.id.text_solve)
@@ -36,6 +35,9 @@ class CalculatorActionListener(act: AppCompatActivity) {
     private var IsGameTouch = false
     private var circleView = CircleView(act)
 
+    object MyDataManager {
+        val firebase = FirebaseHelper()
+    }
 
     fun SubscribeButtons() {
         text_main.showSoftInputOnFocus = false
@@ -53,6 +55,18 @@ class CalculatorActionListener(act: AppCompatActivity) {
         for (i in 0..9) SubscribeButtonByString("b_$i")
 
         for (i in 1..9) SubscribeButtonByString("b_ad$i")
+
+        act.findViewById<Button>(R.id.b_user).setOnClickListener {
+            if (!IsGame || (IsGame && IsGameTouch)) {
+                if (MyDataManager.firebase.isAuth()) {
+                    MyDataManager.firebase.logOut()
+                    act.findViewById<Button>(R.id.b_user).text = "LogIn"
+                } else {
+                    act.startActivity(Intent(act, LogInActivity::class.java))
+                    act.findViewById<Button>(R.id.b_user).text = "LogOut"
+                }
+            }
+        }
 
         act.findViewById<Button>(R.id.b_ac).setOnClickListener {
             if (!IsGame || (IsGame && IsGameTouch)) {

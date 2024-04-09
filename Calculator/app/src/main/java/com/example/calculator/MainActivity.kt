@@ -34,9 +34,4 @@ class MainActivity : AppCompatActivity() {
         }
         return super.dispatchKeyEvent(event)
     }
-
-    override fun onResume() {
-        super.onResume()
-        calculatorListener?.resurm()
-    }
 }
