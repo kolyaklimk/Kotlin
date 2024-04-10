@@ -86,6 +86,8 @@ class CalculatorActionListener(act: AppCompatActivity) {
                     AlertDialog.Builder(act)
                         .setAdapter(adapter) { dialog, position ->
                             text_main.setText(stringList[position])
+                            text_main.setSelection(text_main.length())
+                            text_solve.text = StringCalculating.Calculating(text_main.text.toString())
                         }
                         .show()
                     IsGameTouch = false
