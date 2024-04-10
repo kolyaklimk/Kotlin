@@ -17,28 +17,41 @@
         android:background="@drawable/round_backgound"
         android:orientation="vertical">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1.5"
             android:background="@drawable/round_backgound"
             android:orientation="horizontal">
+
             <Button
                 android:id="@+id/b_user"
                 style="@style/ButtonMenu"
-                android:gravity="start"
+                android:gravity="start|center_vertical"
+                android:textSize="@dimen/_16ssp"
                 android:text="LogIn" />
+
             <Button
                 android:id="@+id/b_theme"
                 style="@style/ButtonMenu"
                 android:gravity="center"
+                android:textSize="@dimen/_16ssp"
                 android:text="T" />
+
+            <Button
+                android:id="@+id/b_history"
+                style="@style/ButtonMenu"
+                android:gravity="center"
+                android:textSize="@dimen/_16ssp"
+                android:text="H"
+                android:visibility="gone" />
+
             <Button
                 android:id="@+id/b_menu"
                 style="@style/ButtonMenu"
                 android:text="@string/b_menu" />
         </LinearLayout>
+
         <EditText
             android:id="@+id/text_main"
             style="@style/MainEditText" />

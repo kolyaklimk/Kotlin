@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.util.DisplayMetrics
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -21,6 +22,7 @@ import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 
 
 class CalculatorActionListener(act: AppCompatActivity) {
@@ -40,6 +42,8 @@ class CalculatorActionListener(act: AppCompatActivity) {
     }
 
     fun SubscribeButtons() {
+        MyDataManager.firebase.getTheme(act)
+
         text_main.showSoftInputOnFocus = false
         text_solve.showSoftInputOnFocus = false
 
@@ -61,10 +65,36 @@ class CalculatorActionListener(act: AppCompatActivity) {
                 if (MyDataManager.firebase.isAuth()) {
                     MyDataManager.firebase.logOut()
                     act.findViewById<Button>(R.id.b_user).text = "LogIn"
+                    act.findViewById<Button>(R.id.b_history).visibility = View.GONE
                 } else {
                     act.startActivity(Intent(act, LogInActivity::class.java))
-                    act.findViewById<Button>(R.id.b_user).text = "LogOut"
                 }
+
+                IsGameTouch = false
+            }
+        }
+
+        act.findViewById<Button>(R.id.b_history).setOnClickListener {
+            if (!IsGame || (IsGame && IsGameTouch)) {
+
+                IsGameTouch = false
+            }
+        }
+        act.findViewById<Button>(R.id.b_theme).setOnClickListener {
+            if (!IsGame || (IsGame && IsGameTouch)) {
+                val currentNightMode = act.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+                val isDarkTheme = currentNightMode == Configuration.UI_MODE_NIGHT_YES
+
+                if (isDarkTheme) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    MyDataManager.firebase.updateTheme("light",act)
+                }
+                else{
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    MyDataManager.firebase.updateTheme("dark",act)
+                }
+
+                IsGameTouch = false
             }
         }
 
@@ -116,6 +146,7 @@ class CalculatorActionListener(act: AppCompatActivity) {
         act.findViewById<Button>(R.id.b_solve).setOnClickListener {
             if (!IsGame || (IsGame && IsGameTouch)) {
                 if (text_solve.text != "Error") {
+                    MyDataManager.firebase.sendHistory(text_solve.text.toString(), act)
                     text_main.setText(text_solve.text)
                 } else {
                     text_main.text.clear()

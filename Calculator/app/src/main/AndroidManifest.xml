@@ -27,7 +27,7 @@
         <activity
             android:name=".ScanQRActivity"
             android:exported="false"
-            android:theme="@style/NoNavBar" />
+            android:theme="@style/Theme.App.SplashScreen"/>
         <activity
             android:name=".LogInActivity"
             android:exported="false"

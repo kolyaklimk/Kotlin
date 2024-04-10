@@ -1,7 +1,9 @@
 package com.example.calculator
 
+import android.content.res.Configuration
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.AuthUI.IdpConfig
 import com.firebase.ui.auth.AuthUI.IdpConfig.EmailBuilder
@@ -56,6 +58,8 @@ class FirebaseHelper : AppCompatActivity() {
                             "LogIn success!",
                             Toast.LENGTH_SHORT
                         ).show()
+
+                        getTheme(act)
                     } else {
                         user?.sendEmailVerification()
                             ?.addOnCompleteListener { verificationTask ->
@@ -151,7 +155,7 @@ class FirebaseHelper : AppCompatActivity() {
             }
     }
 
-    fun getPeriodOfHistory(startAt: Int, endAt: Int): List<String> {
+    fun getPeriodOfHistory(startAt: Int, endAt: Int, act: AppCompatActivity): List<String> {
         val stringList = mutableListOf<String>()
         if (isAuth()) {
             db.collection("User").document(auth.currentUser?.uid.toString())
@@ -177,18 +181,87 @@ class FirebaseHelper : AppCompatActivity() {
         return stringList
     }
 
-    fun sendHistory(Text: String) {
+    fun sendHistory(Text: String, act: AppCompatActivity) {
         if (isAuth()) {
-            db.collection("User").document(auth.currentUser?.uid.toString())
-                .collection("History").add(Text).addOnCompleteListener(this) { task ->
+            val historyData = hashMapOf(
+                "Text" to Text
+            )
+            db.collection("Users").document(auth.currentUser?.uid.toString())
+                .collection("History").add(historyData)
+                .addOnCompleteListener(act) { task ->
                     if (task.isSuccessful) {
-                        // success
+                        Toast.makeText(
+                            act,
+                            "History updated!",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     } else {
-                        // fail
+                        Toast.makeText(
+                            act,
+                            "History not updated!",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
-        } else {
-            // fail
         }
     }
+
+    fun updateTheme(theme: String, act: AppCompatActivity) {
+        if (isAuth()) {
+            val newData = hashMapOf(
+                "Theme" to theme
+            )
+            db.collection("Users").document(auth.currentUser?.uid.toString())
+                .set(newData)
+                .addOnSuccessListener(act) {
+                    Toast.makeText(
+                        act,
+                        "Theme updated!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(
+                        act,
+                        "Theme not updated!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+        }
+    }
+
+    fun getTheme(act: AppCompatActivity) {
+        if (isAuth()) {
+            val userDocument = db.collection("Users").document(auth.currentUser?.uid.toString())
+            userDocument.get()
+                .addOnSuccessListener { documentSnapshot ->
+                    if (documentSnapshot.exists()) {
+                        val theme = documentSnapshot.getString("Theme")
+                        if (theme != null) {
+                            if (theme == "light") {
+                                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                            } else {
+                                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                            }
+                        } else {
+                            val currentNightMode =
+                                act.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+
+                            if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
+                                updateTheme("dark", act)
+                            } else {
+                                updateTheme("light", act)
+                            }
+                        }
+                    } else {
+                        Toast.makeText(
+                            act,
+                            "User theme not found",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+        }
+    }
+
 }

@@ -1,12 +1,15 @@
 package com.example.calculator
 
 import android.content.Intent
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.MotionEvent
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -33,5 +36,15 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return super.dispatchKeyEvent(event)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (CalculatorActionListener.MyDataManager.firebase.isAuth()) {
+            findViewById<Button>(R.id.b_user).text = "LogOut"
+            findViewById<Button>(R.id.b_history).visibility = View.VISIBLE
+        } else {
+            findViewById<Button>(R.id.b_history).visibility = View.GONE
+        }
     }
 }
