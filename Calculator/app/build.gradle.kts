@@ -43,6 +43,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.firebaseui:firebase-ui-auth:7.2.0")
     implementation("com.google.firebase:firebase-messaging:23.4.1")
+    implementation("androidx.biometric:biometric:1.2.0-alpha05")
 
     implementation("com.github.androidmads:QRGenerator:1.0.1")
     implementation("com.github.yuriy-budiyev:code-scanner:2.3.2")
