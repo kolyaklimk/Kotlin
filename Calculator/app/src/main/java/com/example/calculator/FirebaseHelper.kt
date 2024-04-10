@@ -4,20 +4,14 @@ import android.content.res.Configuration
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.firebase.ui.auth.AuthUI
-import com.firebase.ui.auth.AuthUI.IdpConfig
-import com.firebase.ui.auth.AuthUI.IdpConfig.EmailBuilder
-import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
-import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
-import com.google.api.ResourceDescriptor.History
 import com.google.firebase.Firebase
-import com.google.firebase.auth.ActionCodeSettings
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.auth
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.firestore
-import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.tasks.await
+import com.google.firebase.messaging.FirebaseMessaging
 
 class FirebaseHelper : AppCompatActivity() {
     private var auth: FirebaseAuth = Firebase.auth
@@ -26,6 +20,17 @@ class FirebaseHelper : AppCompatActivity() {
     private var tryingEmail = ""
     private var tryingcount = 0
 
+    fun recieveMessage(act: AppCompatActivity) {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Toast.makeText(
+                    act,
+                    "Token is not available!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
 
     fun isAuth(): Boolean {
         return auth.currentUser != null
@@ -155,36 +160,40 @@ class FirebaseHelper : AppCompatActivity() {
             }
     }
 
-    fun getPeriodOfHistory(startAt: Int, endAt: Int, act: AppCompatActivity): List<String> {
-        val stringList = mutableListOf<String>()
+    fun getPeriodOfHistory(
+        limit: Long,
+        act: AppCompatActivity,
+        callback: (List<String>) -> Unit
+    ) {
         if (isAuth()) {
-            db.collection("User").document(auth.currentUser?.uid.toString())
-                .collection("History").startAt(startAt).endAt(endAt).get()
+            db.collection("Users").document(auth.currentUser?.uid.toString())
+                .collection("History").orderBy("Timestamp", Query.Direction.DESCENDING).limit(limit)
+                .get()
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
+                        val stringList = mutableListOf<String>()
                         for (document in task.result!!) {
                             val value = document.getString("Text")
                             value?.let { stringList.add(it) }
                         }
-                        // Обработка полученного списка строк
-                        // Здесь вы можете вызвать функцию или передать список дальше для обработки
+                        callback(stringList)
                     } else {
-                        // Обработка ошибки
-                        val exception = task.exception
-                        // Обработка исключения, если требуется
+                        Toast.makeText(
+                            act,
+                            "History not found!",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
-            return stringList
-        } else {
-            // fail
         }
-        return stringList
     }
+
 
     fun sendHistory(Text: String, act: AppCompatActivity) {
         if (isAuth()) {
             val historyData = hashMapOf(
-                "Text" to Text
+                "Text" to Text,
+                "Timestamp" to FieldValue.serverTimestamp()
             )
             db.collection("Users").document(auth.currentUser?.uid.toString())
                 .collection("History").add(historyData)

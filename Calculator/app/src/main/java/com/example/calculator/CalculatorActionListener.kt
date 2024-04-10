@@ -2,16 +2,17 @@ package com.example.calculator
 
 import android.app.Activity
 import android.app.Activity.RESULT_OK
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
-import android.util.DisplayMetrics
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.PopupMenu
 import android.widget.Toast
@@ -20,6 +21,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupWindow
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -43,6 +45,7 @@ class CalculatorActionListener(act: AppCompatActivity) {
 
     fun SubscribeButtons() {
         MyDataManager.firebase.getTheme(act)
+        MyDataManager.firebase.recieveMessage(act)
 
         text_main.showSoftInputOnFocus = false
         text_solve.showSoftInputOnFocus = false
@@ -76,22 +79,32 @@ class CalculatorActionListener(act: AppCompatActivity) {
 
         act.findViewById<Button>(R.id.b_history).setOnClickListener {
             if (!IsGame || (IsGame && IsGameTouch)) {
+                MyDataManager.firebase.getPeriodOfHistory(20, act) { stringList ->
 
-                IsGameTouch = false
+                    val adapter = ArrayAdapter(act, R.layout.history, stringList)
+
+                    AlertDialog.Builder(act)
+                        .setAdapter(adapter) { dialog, position ->
+                            text_main.setText(stringList[position])
+                        }
+                        .show()
+                    IsGameTouch = false
+                }
             }
         }
+
         act.findViewById<Button>(R.id.b_theme).setOnClickListener {
             if (!IsGame || (IsGame && IsGameTouch)) {
-                val currentNightMode = act.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+                val currentNightMode =
+                    act.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
                 val isDarkTheme = currentNightMode == Configuration.UI_MODE_NIGHT_YES
 
                 if (isDarkTheme) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                    MyDataManager.firebase.updateTheme("light",act)
-                }
-                else{
+                    MyDataManager.firebase.updateTheme("light", act)
+                } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                    MyDataManager.firebase.updateTheme("dark",act)
+                    MyDataManager.firebase.updateTheme("dark", act)
                 }
 
                 IsGameTouch = false
@@ -146,7 +159,7 @@ class CalculatorActionListener(act: AppCompatActivity) {
         act.findViewById<Button>(R.id.b_solve).setOnClickListener {
             if (!IsGame || (IsGame && IsGameTouch)) {
                 if (text_solve.text != "Error") {
-                    MyDataManager.firebase.sendHistory(text_solve.text.toString(), act)
+                    MyDataManager.firebase.sendHistory(text_main.text.toString(), act)
                     text_main.setText(text_solve.text)
                 } else {
                     text_main.text.clear()
