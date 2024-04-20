@@ -28,7 +28,7 @@
                 style="@style/ButtonMenu"
                 android:gravity="start|center_vertical"
                 android:textSize="@dimen/_16ssp"
-                android:text="In" />
+                android:text="LogIn" />
 
             <Button
                 android:id="@+id/b_theme"
